@@ -101,6 +101,10 @@ export default {
           sortable: true,
           numeric: true,
         },
+        {
+          field: 'gainsx',
+          label: 'Gains Multipler',
+        },
       ],
     }
   },
@@ -109,7 +113,7 @@ export default {
   },
   methods: {
     async search() {
-      const { ticker } = this
+      const ticker = this.ticker.toUpperCase()
       this.currentTicker = ticker
       this.baggerData = []
       try {
@@ -154,6 +158,7 @@ export default {
             percent_change_required: Number(this.percentageChange(targetPrice)),
             cost: ask,
             open_interest: openInterest,
+            gainsx: `${this.multipler}X`,
           })
         }
       )
