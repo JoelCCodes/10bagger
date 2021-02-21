@@ -70,25 +70,25 @@ export default {
       columns: [
         {
           field: 'strike_price',
-          label: 'Strike Price',
+          label: 'Strike Price ($)',
           sortable: true,
           numeric: true,
         },
         {
           field: 'percent_change_required',
-          label: 'Percent Change Required',
+          label: 'Percent Change Required (%)',
           sortable: true,
           numeric: true,
         },
         {
           field: 'target_price',
-          label: 'Target Price',
+          label: 'Target Price ($)',
           sortable: true,
           numeric: true,
         },
         {
           field: 'cost',
-          label: 'Cost',
+          label: 'Cost ($)',
           sortable: true,
           numeric: true,
         },
@@ -111,7 +111,9 @@ export default {
       try {
         await this.fetchMarketPrice(ticker)
         await this.fetchOptionsDates(ticker)
-        this.$buefy.notification.open('10 Baggers for ' + ticker)
+        this.$buefy.notification.open(
+          'Here are some potential 10 baggers for ' + ticker
+        )
       } catch (err) {
         this.$buefy.notification.open(`Invalid Ticker`)
       }

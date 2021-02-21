@@ -13,19 +13,20 @@
       <li>Select an Expiration Date from the dropdown</li>
       <li>
         By default you'll see which option requires the least amount of price
-        movement to become a 10 bagger at the top!
+        movement to become a 10 bagger and the target price it needs to hit to
+        make it happen.
       </li>
       <li>
         You can sort by Target price and see if any 10baggers match your TA
         target prices
       </li>
       <li>
-        You can sort by Strike price to see what it would take for the ATM call
-        to 10x in value
+        You can sort by Strike price to see what different OTM/ITM/ATM would
+        need to 10x
       </li>
       <li>
-        Additionally, if you'd like to see the most trades options in that
-        change, sort by Open Interest
+        Additionally, you can sort by open interest to see which options are
+        being traded the most
       </li>
     </ol>
     <br />
@@ -36,8 +37,8 @@
       We look at the initial cost of the options and calculate how far into the
       money the option needs to expire in order to generate enough instrinsic
       value to 10x the cost of the option. Its important to remember that these
-      calculation assumes holding till expiration but some cases you can get the
-      10 bagger prior to expiration of the option.
+      calculations assume you're holding till expiration but in some cases you
+      can get the 10 bagger prior to expiration of the option.
     </p>
     <br />
     <h2 class="title">
