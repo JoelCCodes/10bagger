@@ -8,8 +8,10 @@
         <b-button @click="search">Search</b-button>
       </card>
     </div>
-    <span v-show="mkprice" class="is-size-1"> ${{ mkprice }}/share</span>
-
+    <span v-show="mkprice" class="is-size-3"
+      >{{ currentTicker }} is trading at ${{ mkprice }}/share</span
+    >
+    <br />
     <div>
       <b-dropdown
         v-show="selectedExpirationDate"
@@ -58,6 +60,7 @@ export default {
   data() {
     return {
       ticker: null,
+      currentTicker: null,
       dates: [],
       mkprice: null,
       optionData: null,
@@ -106,7 +109,8 @@ export default {
   },
   methods: {
     async search() {
-      const { ticker, dates } = this
+      const { ticker } = this
+      this.currentTicker = ticker
       this.baggerData = []
       try {
         await this.fetchMarketPrice(ticker)
@@ -165,7 +169,7 @@ export default {
       this.lastUpdated = date
     },
     expirationDateSelected(date) {
-      this.fetchOptionsData(this.ticker, date)
+      this.fetchOptionsData(this.currentTicker, date)
     },
     formateDate(date) {
       var dateString = date
