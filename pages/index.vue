@@ -1,16 +1,17 @@
 <template>
   <section class="section">
     <div class="columns is-mobile">
-      <card :title="`Search for ${multipler} Bagger easily!`" icon="cloud">
+      <card :title="`Where will you find a ${multipler} bagger today?`">
         <b-field label="Ticker">
           <b-input v-model="ticker"></b-input>
         </b-field>
         <b-button @click="search">Search</b-button>
       </card>
     </div>
-    {{ mkprice }}
+    Market Price: {{ mkprice }}
 
     <div>
+      Expiration Date:
       <b-dropdown v-model="selectedExpirationDate" aria-role="list">
         <template #trigger>
           {{
@@ -32,6 +33,7 @@
     </div>
     <div>
       <b-table
+        :default-sort="['percent_change_required', 'asc']"
         :loading="loading"
         :data="baggerData"
         :columns="columns"
