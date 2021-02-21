@@ -41,6 +41,12 @@
       can get the 10 bagger prior to expiration of the option.
     </p>
     <br />
+    <h2 class="title">How do I contact you?</h2>
+    <p>
+      Feel free to email joel@aristocal.app or message us on instagram
+      @thearistocal
+    </p>
+    <br />
     <h2 class="title">
       Awesome, I made my first 10 bagger, how do I support? (No one actually
       says this)
