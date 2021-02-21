@@ -3,7 +3,11 @@
     <div class="columns is-mobile">
       <card :title="`Where will you find a ${multipler} bagger today?`">
         <b-field label="Ticker">
-          <b-input @keyup.native.enter="search" v-model="ticker"></b-input>
+          <b-input
+            :autofocus="true"
+            @keyup.native.enter="search"
+            v-model="ticker"
+          ></b-input>
         </b-field>
         <b-button @click="search">Search</b-button>
       </card>
@@ -40,12 +44,21 @@
     </div>
     <div>
       <b-table
+        detailed
         v-show="baggerData.length > 0"
         :default-sort="['percent_change_required', 'asc']"
         :loading="loading"
         :data="baggerData"
         :columns="columns"
-      ></b-table>
+      >
+        <template #detail="props">
+          To hit a {{ multipler }}bagger {{ currentTicker }} needs to move to
+          the value of ${{ props.row.target_price }} by
+          {{ formateDate(selectedExpirationDate) }}, which is
+          {{ props.row.percent_change_required }}% percent change in underlying
+          asset.
+        </template>
+      </b-table>
     </div>
     <footer v-show="lastUpdated">Last Updated: {{ lastUpdated }}</footer>
   </section>
