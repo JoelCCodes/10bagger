@@ -3,22 +3,27 @@
     <div class="columns is-mobile">
       <card :title="`Where will you find a ${multipler} bagger today?`">
         <b-field label="Ticker">
-          <b-input v-model="ticker"></b-input>
+          <b-input @keyup.native.enter="search" v-model="ticker"></b-input>
         </b-field>
         <b-button @click="search">Search</b-button>
       </card>
     </div>
-    Market Price: {{ mkprice }}
+    <span v-show="mkprice" class="is-size-1"> ${{ mkprice }}/share</span>
 
     <div>
-      Expiration Date:
-      <b-dropdown v-model="selectedExpirationDate" aria-role="list">
+      <b-dropdown
+        v-show="selectedExpirationDate"
+        v-model="selectedExpirationDate"
+        aria-role="list"
+      >
         <template #trigger>
-          {{
-            selectedExpirationDate
-              ? formateDate(selectedExpirationDate)
-              : 'Select an Expiration Date'
-          }}
+          <b-button>
+            {{
+              selectedExpirationDate
+                ? formateDate(selectedExpirationDate)
+                : 'Select an Expiration Date'
+            }}
+          </b-button>
         </template>
 
         <b-dropdown-item
@@ -33,12 +38,14 @@
     </div>
     <div>
       <b-table
+        v-show="baggerData.length > 0"
         :default-sort="['percent_change_required', 'asc']"
         :loading="loading"
         :data="baggerData"
         :columns="columns"
       ></b-table>
     </div>
+    <footer v-show="lastUpdated">Last Updated: {{ lastUpdated }}</footer>
   </section>
 </template>
 
@@ -59,6 +66,7 @@ export default {
       loading: false,
       multipler: 10,
       baggerData: [],
+      lastUpdated: null,
       columns: [
         {
           field: 'strike_price',
@@ -99,10 +107,15 @@ export default {
   methods: {
     async search() {
       const { ticker, dates } = this
-      this.$buefy.notification.open('10 Baggers for ' + ticker)
       this.baggerData = []
-      await this.fetchMarketPrice(ticker)
-      await this.fetchOptionsDates(ticker)
+      try {
+        await this.fetchMarketPrice(ticker)
+        await this.fetchOptionsDates(ticker)
+        this.$buefy.notification.open('10 Baggers for ' + ticker)
+      } catch (err) {
+        this.$buefy.notification.open(`Invalid Ticker`)
+      }
+      this.ticker = ''
     },
     async fetchMarketPrice(ticker) {
       this.mkprice = await this.$axios.$get(
@@ -113,8 +126,8 @@ export default {
       this.dates = await this.$axios.$get(
         `https://cloud.iexapis.com/v1/stock/${ticker}/options?token=pk_1e940096696b46e0bb280fa59c46c05a`
       )
-      await this.fetchOptionsData(ticker, this.dates[0])
-      this.selectedExpirationDate = this.dates[0]
+      await this.fetchOptionsData(ticker, this.dates[1])
+      this.selectedExpirationDate = this.dates[1]
     },
     async fetchOptionsData(ticker, date) {
       this.loading = true
@@ -145,6 +158,9 @@ export default {
     },
     percentageChange(targetPrice) {
       return (((targetPrice - this.mkprice) / this.mkprice) * 100).toFixed(2)
+    },
+    setLastUpdated(date) {
+      this.lastUpdated = date
     },
     expirationDateSelected(date) {
       this.fetchOptionsData(this.ticker, date)

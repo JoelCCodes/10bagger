@@ -39,19 +39,35 @@
       calculation assumes holding till expiration but some cases you can get the
       10 bagger prior to expiration of the option.
     </p>
-    <br>
+    <br />
     <h2 class="title">
-      Awesome, I made my first 10 bagger, how do I support? (No one actually says this)
+      Awesome, I made my first 10 bagger, how do I support? (No one actually
+      says this)
     </h2>
     <p>
-
-      <form action="https://www.paypal.com/donate" method="post" target="_top">
-<input type="hidden" name="business" value="5XKGKHHC3VDAJ" />
-<input type="hidden" name="item_name" value="10Baggers for anyone who wants them" />
-<input type="hidden" name="currency_code" value="USD" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-</form>
+      We'll keep working on this project as along as it keeps helping people
+      make money but the cost of business is always a barrier that can only be
+      broken with profitablity
     </p>
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+      <input type="hidden" name="business" value="5XKGKHHC3VDAJ" />
+      <input type="hidden" name="item_name" value="10Bagger Donation" />
+      <input type="hidden" name="currency_code" value="USD" />
+      <input
+        type="image"
+        src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+        border="0"
+        name="submit"
+        title="PayPal - The safer, easier way to pay online!"
+        alt="Donate with PayPal button"
+      />
+      <img
+        alt=""
+        border="0"
+        src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+        width="1"
+        height="1"
+      />
+    </form>
   </section>
 </template>

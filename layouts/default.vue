@@ -7,14 +7,8 @@
     >
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <span>10Bagger</span>
+          <span>10Bagger.com</span>
         </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
       </div>
     </nav>
 
