@@ -28,10 +28,31 @@
         <nuxt />
       </div>
     </section>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('config', 'G-SYP6CRQW0X')
+    </script>
   </div>
 </template>
-
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SYP6CRQW0X"
+    ></script>
 <script>
+window.dataLayer = window.dataLayer || []
+function gtag() {
+  dataLayer.push(arguments)
+}
+gtag('js', new Date())
+
+gtag('config', 'G-SYP6CRQW0X')
 export default {
   data() {
     return {
