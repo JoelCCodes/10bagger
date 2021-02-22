@@ -40,6 +40,9 @@ Vue.use(VueAnalytics, {
 })
 
 export default {
+  mounted() {
+    this.$ga.page('/')
+  },
   data() {
     return {
       items: [
