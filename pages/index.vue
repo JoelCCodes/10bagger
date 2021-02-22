@@ -126,6 +126,7 @@ export default {
   },
   methods: {
     async search() {
+      this.$ga.event('Platform', 'searched', 'Alpha Launch', this.ticker)
       const ticker = this.ticker.toUpperCase()
       this.currentTicker = ticker
       this.baggerData = []
