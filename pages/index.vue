@@ -52,11 +52,11 @@
         :columns="columns"
       >
         <template #detail="props">
-          To hit a {{ multipler }}bagger {{ currentTicker }} needs to move to
-          the value of ${{ props.row.target_price }} by
-          {{ formateDate(selectedExpirationDate) }}, which is
-          {{ props.row.percent_change_required }}% percent change in underlying
-          asset.
+          To hit a {{ multipler }}bagger, {{ currentTicker }} needs to move up
+          ${{ (props.row.target_price - mkprice).toFixed(2) }}
+          or
+          {{ props.row.percent_change_required }}% by
+          {{ formateDate(selectedExpirationDate) }}
         </template>
       </b-table>
     </div>
